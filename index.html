@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishGuard – Simple Phishing Detector</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="dark">
+    <!-- Theme toggle -->
+    <div class="theme-toggle" id="themeToggle">
+        <span id="themeIcon">🌙</span>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <div class="logo-icon">🛡️</div>
+                <div>
+                    <h1>PhishGuard</h1>
+                    <p class="subtitle">Simple Phishing Detector</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats Banner -->
+        <div class="stats-banner">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value" id="totalScans">0</div>
+                    <div class="stat-label">Total Scans</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="phishingCaught">0</div>
+                    <div class="stat-label">Phishing Caught</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="todaysCatches">0</div>
+                    <div class="stat-label">Today's Catches</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Card -->
+        <div class="main-card">
+            <div class="input-section">
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        class="url-input" 
+                        id="urlInput" 
+                        placeholder="Paste a URL to analyze (e.g., https://example.com)"
+                        autocomplete="off"
+                    >
+                </div>
+                <button class="analyze-btn" id="analyzeBtn">
+                    🔍 Analyze URL
+                </button>
+            </div>
+
+            <!-- Loading State -->
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Analyzing URL for threats...</p>
+                <p style="color: var(--text-secondary); font-size: 0.9em; margin-top: 10px;">
+                    Checking for suspicious patterns, redirects, and known threats
+                </p>
+            </div>
+
+            <!-- Results -->
+            <div class="results" id="results">
+                <!-- URL Preview -->
+                <div class="url-preview" id="urlPreview">
+                    <div class="favicon" id="favicon">🌐</div>
+                    <div class="url-details">
+                        <div class="url-domain" id="urlDomain"></div>
+                        <span class="url-protocol" id="urlProtocol"></span>
+                    </div>
+                </div>
+
+                <!-- Threat Score -->
+                <div class="threat-score-section">
+                    <div class="score-label">Threat Score</div>
+                    <div class="score-circle">
+                        <div class="score-value" id="scoreValue">0</div>
+                    </div>
+                    <div class="score-bar">
+                        <div class="score-fill" id="scoreFill"></div>
+                    </div>
+                </div>
+
+                <!-- Verdict -->
+                <div class="verdict" id="verdict">
+                    <div class="verdict-icon" id="verdictIcon"></div>
+                    <div id="verdictText"></div>
+                </div>
+
+                <!-- Report Button -->
+                <center>
+                    <button class="report-btn" id="reportBtn" style="display: none;">
+                        🚨 Report as Phishing
+                    </button>
+                </center>
+
+                <!-- Warnings -->
+                <div class="warnings-section" id="warningsSection" style="display: none;">
+                    <div class="section-title">
+                        ⚠️ Detected Issues
+                    </div>
+                    <div class="warning-list" id="warningList"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- History Section -->
+        <div class="history-section">
+            <div class="section-title">
+                📜 Recent Scans
+            </div>
+            <div id="historyList">
+                <div class="empty-history">
+                    No scans yet. Try analyzing a URL!
+                </div>
+            </div>
+            <center>
+                <button class="clear-history-btn" id="clearHistoryBtn" style="display: none;">
+                    🗑️ Clear History
+                </button>
+            </center>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
